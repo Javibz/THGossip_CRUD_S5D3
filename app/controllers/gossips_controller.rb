@@ -7,6 +7,7 @@ class GossipsController < ApplicationController
   def create
     my_params = params["gossip"]
     Gossip.create(title:my_params["title"], content:my_params['content'], anonymous_gossiper:my_params["anonymous_gossiper"])
+    redirect_to '/'
   end
 
   def show
@@ -18,8 +19,20 @@ class GossipsController < ApplicationController
   end
 
   def edit
+    @gossip_id = Gossip.find(params["id"])
+
   end
 
   def update
+    @gossip_id = Gossip.find(params["id"])
+    gossip_params = params.require(:gossip).permit(:title, :content, :anonymous_gossiper)
+    @gossip_id.update(gossip_params)
+    redirect_to '/' 
+  end
+
+  def destroy
+    @gossip = Gossip.find(params[:id])
+    @gossip.destroy
+    redirect_to '/'
   end
 end

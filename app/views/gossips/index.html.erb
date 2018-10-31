@@ -4,9 +4,9 @@
 Gossip.all.each do |gossip|%><br>
 <div class="card col-4" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">From <%= gossip.title %></h5>
+    <h5 class="card-title"><%= gossip.title %></h5>
     <p class="card-text"><%= gossip.content %></p>
-    <p class="card-text"><%= gossip.anonymous_gossiper %></p>
+    <p class="card-text">Auteur : <%= gossip.anonymous_gossiper %></p>
     <div class="btn btn-dark"><%= link_to "Gossip n°#{gossip.id}", "/#{gossip.id}" %></div>
     <p class="card-text">Date de creation : <%= gossip.created_at %></p>
   </div>

@@ -5,3 +5,10 @@
 <p>Content :<%= @gossip_id.content %></p>
 
 <p>Secret Name :<%= @gossip_id.anonymous_gossiper %></p>
+
+<div class="btn btn-dark"><%= link_to "Editer le Gossip", edit_gossip_path %></div>
+
+<div class="btn btn-dark"><%= link_to 'Clique pour détruire', @gossip, method: :delete %></div>
+
+
+
