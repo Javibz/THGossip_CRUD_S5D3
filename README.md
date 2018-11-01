@@ -1,24 +1,23 @@
-# README
+# Gossip
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> Programming w/ @Thierry Kq & @JaviBZ
 
-Things you may want to cover:
+**Le site n'est pas fonctionnel à 100%**
 
-* Ruby version
+## Lien du projet :
 
-* System dependencies
+https://gossip2018thp.herokuapp.com/
 
-* Configuration
+### Fonctions 
+- Creation d'un user
+- Login d'un user
+- Creation d'un gossip
+- Edit/delete un gossip
+- index des gossip
 
-* Database creation
+### Pas fonctionnel 
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ - Protection d'un gossip d'un user
+ - Pas de possibilité de Liker
+ - Pas de possibilité de commenter (par contre le gossip dis combien il à de commentaire xD)
+ - Pas de possibilité de commenter un commentaire. 
