@@ -10,23 +10,22 @@
 
 <div class="btn btn-dark"><%= link_to 'Clique pour détruire', @gossip, method: :delete %></div>
 
+<h2> <%= @comments.count %> Commentaires </h2>
 
-<%= form_for @gossip_id do |f| %>
-  <div class="form-row">
-    <div class="form-group col-md-2">
-      Titre du Gossip : <%= f.text_field :title, class: 'form-control',  placeholder: 'Nom du gossip' %>
-    </div>
-    <div class="form-group col-md-2">
-    Contenue du gossip : <%= f.text_area :content, class: 'form-control', placeholder: 'Ecris ton gossip...' %>
-    </div>
-  </div>
-  <div class="form-group col-md-4">
-    Pseudo Secret : <%= f.text_area :anonymous_gossiper, class: 'form-control', placeholder: 'Secret name' %>
-  </div>
-    <%= f.submit class: 'btn btn-primary' %>
+<div class="btn btn-dark"><%= link_to 'Aller sur la page des commentaires',  new_gossip_comment_path(@gossip_id) %></div>
+<% @comments.each do |comment| %>
+<h3> <%= comment.anonymous_commentor %> </h3>
+<p> <%= comment.content %> </p>
 
 <% end %>
+<h3> Ajouter un commentaire: </h3>
+    <%= form_for([@gossip_id, @comments.build]) do |f| %>
 
+    <p> <%= f.label :anonymous_commentor %> 
+    <%= f.text_field :anonymous_commentor %> </p>
 
-
-
+<p> <%= f.label :content %><br/> 
+    <%= f.text_area :content %> </p>
+<br/>
+<p> <%= f.submit %> </p>
+<% end %>

@@ -7,15 +7,19 @@ class GossipsController < ApplicationController
   def create
     my_params = params["gossip"]
     Gossip.create(title:my_params["title"], content:my_params['content'], anonymous_gossiper:my_params["anonymous_gossiper"])
-    redirect_to '/'
+    redirect_to gossips_path
   end
 
   def show
     @gossip_id = Gossip.find(params["id"])
+    @comments = @gossip_id.comments
   end
 
   def index
     @all_gossips = Gossip.all
+    # @comments = @gossip_id.comments
+    # @all_comments = @comments.count
+
   end
 
   def edit

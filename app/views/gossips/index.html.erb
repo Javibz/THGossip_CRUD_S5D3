@@ -7,8 +7,9 @@ Gossip.all.each do |gossip|%><br>
     <h5 class="card-title"><%= gossip.title %></h5>
     <p class="card-text"><%= gossip.content %></p>
     <p class="card-text">Auteur : <%= gossip.anonymous_gossiper %></p>
-    <div class="btn btn-dark"><%= link_to "Gossip n°#{gossip.id}", "/#{gossip.id}" %></div>
+    <div class="btn btn-dark"><%= link_to "Gossip n°#{gossip.id}", "/gossips/#{gossip.id}" %></div>
     <p class="card-text">Date de creation : <%= gossip.created_at %></p>
+    <p> il ya  <%= gossip.comments.count %></p>
   </div>
 </div>
 <% end %>
