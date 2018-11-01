@@ -3,9 +3,8 @@ class CreateGossips < ActiveRecord::Migration[5.2]
     create_table :gossips do |t|
       t.string :title
       t.text :content
-      t.string :anonymous_gossiper
       t.timestamps
-      t.belongs_to :user, optional: true
+      t.references :user, index: true, foreign_key: true
     end
   end
 end

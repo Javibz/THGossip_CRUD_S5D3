@@ -16,18 +16,18 @@ ActiveRecord::Schema.define(version: 2018_10_31_174126) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.string "anonymous_commentor"
     t.text "content"
     t.bigint "gossip_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["gossip_id"], name: "index_comments_on_gossip_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "gossips", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.string "anonymous_gossiper"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
@@ -37,9 +37,12 @@ ActiveRecord::Schema.define(version: 2018_10_31_174126) do
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "email"
+    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_foreign_key "comments", "gossips"
+  add_foreign_key "comments", "users"
+  add_foreign_key "gossips", "users"
 end

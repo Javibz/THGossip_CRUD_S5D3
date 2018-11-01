@@ -1,10 +1,15 @@
 <p>ID : <%= @gossip_id.id %></p>
-
 <p>Title : <%= @gossip_id.title %> </p>
-
 <p>Content :<%= @gossip_id.content %></p>
 
+
+
+<% if false %> 
 <p>Secret Name :<%= @gossip_id.anonymous_gossiper %></p>
+<% end %>
+
+
+
 
 <div class="btn btn-dark"><%= link_to "Editer le Gossip", edit_gossip_path %></div>
 
@@ -14,18 +19,7 @@
 
 <div class="btn btn-dark"><%= link_to 'Aller sur la page des commentaires',  new_gossip_comment_path(@gossip_id) %></div>
 <% @comments.each do |comment| %>
-<h3> <%= comment.anonymous_commentor %> </h3>
+<h3> <%= comment.user.first_name %> </h3>
 <p> <%= comment.content %> </p>
 
-<% end %>
-<h3> Ajouter un commentaire: </h3>
-    <%= form_for([@gossip_id, @comments.build]) do |f| %>
-
-    <p> <%= f.label :anonymous_commentor %> 
-    <%= f.text_field :anonymous_commentor %> </p>
-
-<p> <%= f.label :content %><br/> 
-    <%= f.text_area :content %> </p>
-<br/>
-<p> <%= f.submit %> </p>
 <% end %>
