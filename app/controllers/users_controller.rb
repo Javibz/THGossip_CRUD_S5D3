@@ -20,10 +20,12 @@ class UsersController < ApplicationController
 
       flash[:info] = "Bienvenue #{@current_user.first_name} !"
       # redirect_to root_path
-      redirect_to user_path(@current_user.id)
+      @hackvar = @current_user.id
+      puts @hackvar
+      redirect_to user_gossips_path(@current_user.id)
 
     else
-
+      puts "mauvais pass"
       flash[:info] = "Échec de la connexion"
 
       redirect_to users_login_path
